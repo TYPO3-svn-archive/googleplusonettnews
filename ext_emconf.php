@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "googleplusonettnews".
 #
-# Auto generated 17-08-2011 17:12
+# Auto generated 17-08-2011 20:51
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'Google Plus One for tt_news',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '2.1.1',
+	'version' => '2.1.2',
 	'dependencies' => 'cms,extbase,fluid,tt_news',
 	'conflicts' => '',
 	'priority' => '',
@@ -27,7 +27,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearcacheonload' => 0,
 	'lockType' => '',
-	'author' => 'Falko König',
+	'author' => 'Falko Koenig',
 	'author_email' => 'falko@foscom.de',
 	'author_company' => '',
 	'CGLcompliance' => '',
