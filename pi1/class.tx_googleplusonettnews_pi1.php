@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2011 Falko König <falko@foscom.de>
+*  (c) 2010 Falko König <falko@foscom.de>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -46,7 +46,7 @@ class tx_googleplusonettnews_pi1 extends tslib_pibase {
 	/**
 	 * The extraItemMarkerProcessor function from tt_news
 	 * 
-	 * @return	Google Plus One Button
+	 * @return	Tweet and/or Like button
 	 */
 	function extraItemMarkerProcessor($markerArray, $row, $conf, &$pObj) {
 		$this->pObj = $pObj;
@@ -55,6 +55,15 @@ class tx_googleplusonettnews_pi1 extends tslib_pibase {
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['googleplusonettnews']);
 		$this->baseurl = t3lib_div::getIndpEnv('TYPO3_SITE_URL');
 		
+		$pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+		$pageRenderer->addJsFooterInlineCode('googleplusonebutton', 'window.___gcfg = {lang: \'de\'};
+
+  (function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'https://apis.google.com/js/plusone.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();', FALSE);
+
 		$this->text = $this->row['title'];
 		//print_r($pObj);
 		if($pObj->conf['useHRDatesSingle'] == 1 || $pObj->conf['displayLatest.']['useHRDatesSingle'] == 1 || $pObj->conf['displayList.']['useHRDatesSingle'] == 1 || $pObj->conf['displaySingle.']['useHRDatesSingle'] == 1){
@@ -79,16 +88,17 @@ class tx_googleplusonettnews_pi1 extends tslib_pibase {
 	}
 	
 	
+	
+	
+	
 	/**
-	 * Get Google Plus One button
+	 * Get Tweet button
 	 * 
-	 * @return	HTML	Google Plus One button
+	 * @return	HTML	Tweet button
 	 */
 	function getGooglePlusButton($linkje=''){
 		
-		$googleplusButton = '<div class="tx_googleplus_pi1"><script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-{lang: \'de\'}</script>
-<g:plusone></g:plusone></div>';
+		$googleplusButton = '<div class="tx_googleplus_pi1"><g:plusone></g:plusone></div>';
 		
 		return $googleplusButton;
 	}
